@@ -67,13 +67,13 @@ module RailsAdmin
             end
 
             if request.get?
-              query = list_entries(@model_config, :nestable, false, false).reorder(nil)
+              query = list_entries(@model_config, :nestable, false, true).reorder(nil)
 
               case @options[:scope].class.to_s
                 when 'Proc'
                   query.merge!(@options[:scope].call)
                 when 'Symbol'
-                  query.merge!(@abstract_model.model.public_send(@options[:scope]))
+                 # query.merge!(@abstract_model.model.public_send(@options[:scope]))
               end
 
               if @nestable_conf.tree?
