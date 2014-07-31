@@ -67,6 +67,7 @@ module RailsAdmin
             end
 
             if request.get?
+              params[:page] = 1
               query = list_entries(@model_config, :nestable, false, true).reorder(nil)
 
               case @options[:scope].class.to_s
